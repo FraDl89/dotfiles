@@ -1,0 +1,42 @@
+#Si3status config
+
+general {
+        output_format = "none"
+        colors = true
+        separator = " • "
+        
+}
+
+
+
+
+order += "disk /"
+order += "disk /home/"
+order += "ethernet _first_" 
+order += "memory"
+order += "tztime local"
+
+
+tztime local {
+        format = "%d-%m-%Y  ⌚ %H:%M "
+        hide_if_equals_localtime = false
+}
+
+
+
+memory {
+        format = "RAM %used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/home/" {
+        format = "⌂ %free"
+}
+disk "/" {
+	format = "☭ %free"
+}
+ethernet _first_ {    
+        format_up = "L: %ip"    
+        format_down = "E: down"    
+} 
